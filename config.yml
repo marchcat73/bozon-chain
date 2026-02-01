@@ -1,27 +1,31 @@
 version: 1
 validation: sovereign
 default_denom: stake
-accounts: 
-- name: alice
-  coins:
-  - 20000token
-  - 200000000stake
-- name: bob
-  coins:
-  - 10000token
-  - 100000000stake
+genesis:
+  chain_id: bozon_chain-1
+accounts:
+  - name: alice
+    coins:
+      - 20000token
+      - 200000000stake
+    mnemonic: "resemble filter season limb discover repeat relief episode buyer receive paper seed marine senior jaguar debate benefit physical tumble drastic youth heart muffin lucky"
+  - name: bob
+    coins:
+      - 10000token
+      - 100000000stake
+    mnemonic: "share pig balcony radar guard mystery coil evidence race salad pretty news traffic purpose problem process swap knee cheese thunder clown next journey dish"
 client:
   openapi:
     path: docs/static/openapi.json
 faucet:
   name: bob
   coins:
-  - 5token
-  - 100000stake
+    - 5token
+    - 100000stake
 validators:
-- name: alice
-  bonded: 100000000stake
-- name: validator1
-  bonded: 200000000stake
-- name: validator2
-  bonded: 100000000stake
+  - name: alice
+    bonded: 100000000stake
+  - name: validator1
+    bonded: 200000000stake
+  - name: validator2
+    bonded: 100000000stake
