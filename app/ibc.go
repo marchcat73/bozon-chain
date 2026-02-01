@@ -30,6 +30,8 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v10/modules/core/keeper"
 	solomachine "github.com/cosmos/ibc-go/v10/modules/light-clients/06-solomachine"
 	ibctm "github.com/cosmos/ibc-go/v10/modules/light-clients/07-tendermint"
+	wasmmodule "github.com/marchcat73/bozon-chain/x/wasm/module"
+	wasmmoduletypes "github.com/marchcat73/bozon-chain/x/wasm/types"
 )
 
 // registerIBCModules register IBC keepers and non dependency inject modules.
@@ -117,6 +119,8 @@ func (app *App) registerIBCModules(appOpts servertypes.AppOptions) error {
 	ibcv2Router := ibcapi.NewRouter().
 		AddRoute(ibctransfertypes.PortID, transferStackV2)
 
+	wasmIBCModule := wasmmodule.NewIBCModule(app.appCodec, app.WasmKeeper)
+	ibcRouter.AddRoute(wasmmoduletypes.ModuleName, wasmIBCModule)
 	// this line is used by starport scaffolding # ibc/app/module
 
 	app.IBCKeeper.SetRouter(ibcRouter)

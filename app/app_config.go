@@ -69,6 +69,8 @@ import (
 	ibcexported "github.com/cosmos/ibc-go/v10/modules/core/exported"
 	_ "github.com/marchcat73/bozon-chain/x/bozonchain/module"
 	bozonchainmoduletypes "github.com/marchcat73/bozon-chain/x/bozonchain/types"
+	_ "github.com/marchcat73/bozon-chain/x/wasm/module"
+	wasmmoduletypes "github.com/marchcat73/bozon-chain/x/wasm/types"
 	"google.golang.org/protobuf/types/known/durationpb"
 )
 
@@ -126,6 +128,7 @@ var (
 						ibcexported.ModuleName,
 						// chain modules
 						bozonchainmoduletypes.ModuleName,
+						wasmmoduletypes.ModuleName,
 						// this line is used by starport scaffolding # stargate/app/beginBlockers
 					},
 					EndBlockers: []string{
@@ -135,6 +138,7 @@ var (
 						group.ModuleName,
 						// chain modules
 						bozonchainmoduletypes.ModuleName,
+						wasmmoduletypes.ModuleName,
 						// this line is used by starport scaffolding # stargate/app/endBlockers
 					},
 					// The following is mostly only needed when ModuleName != StoreKey name.
@@ -172,6 +176,7 @@ var (
 						icatypes.ModuleName,
 						// chain modules
 						bozonchainmoduletypes.ModuleName,
+						wasmmoduletypes.ModuleName,
 						// this line is used by starport scaffolding # stargate/app/initGenesis
 					},
 				}),
@@ -271,6 +276,10 @@ var (
 			{
 				Name:   bozonchainmoduletypes.ModuleName,
 				Config: appconfig.WrapAny(&bozonchainmoduletypes.Module{}),
+			},
+			{
+				Name:   wasmmoduletypes.ModuleName,
+				Config: appconfig.WrapAny(&wasmmoduletypes.Module{}),
 			},
 			// this line is used by starport scaffolding # stargate/app/moduleConfig
 		},

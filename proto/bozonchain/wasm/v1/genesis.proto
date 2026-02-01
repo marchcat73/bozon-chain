@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package bozonchain.wasm.v1;
+
+import "amino/amino.proto";
+import "bozonchain/wasm/v1/params.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/marchcat73/bozon-chain/x/wasm/types";
+
+// GenesisState defines the wasm module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+  string port_id = 2;
+}

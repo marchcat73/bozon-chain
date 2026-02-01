@@ -47,6 +47,7 @@ import (
 
 	"github.com/marchcat73/bozon-chain/docs"
 	bozonchainmodulekeeper "github.com/marchcat73/bozon-chain/x/bozonchain/keeper"
+	wasmmodulekeeper "github.com/marchcat73/bozon-chain/x/wasm/keeper"
 )
 
 const (
@@ -101,6 +102,7 @@ type App struct {
 	// simulation manager
 	sm               *module.SimulationManager
 	BozonchainKeeper bozonchainmodulekeeper.Keeper
+	WasmKeeper       wasmmodulekeeper.Keeper
 }
 
 func init() {
@@ -181,6 +183,7 @@ func New(
 		&app.CircuitBreakerKeeper,
 		&app.ParamsKeeper,
 		&app.BozonchainKeeper,
+		&app.WasmKeeper,
 	); err != nil {
 		panic(err)
 	}

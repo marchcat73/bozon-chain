@@ -1,0 +1,13 @@
+syntax = "proto3";
+package bozonchain.wasm.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/marchcat73/bozon-chain/x/wasm/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "bozonchain/x/wasm/Params";
+  option (gogoproto.equal) = true;
+}
