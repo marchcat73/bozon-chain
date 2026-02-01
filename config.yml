@@ -6,26 +6,37 @@ genesis:
 accounts:
   - name: alice
     coins:
-      - 20000token
+      - 100000000ubozon
       - 200000000stake
     mnemonic: "resemble filter season limb discover repeat relief episode buyer receive paper seed marine senior jaguar debate benefit physical tumble drastic youth heart muffin lucky"
   - name: bob
     coins:
-      - 10000token
-      - 100000000stake
+      - 100000000ubozon
+      - 200000000stake
     mnemonic: "share pig balcony radar guard mystery coil evidence race salad pretty news traffic purpose problem process swap knee cheese thunder clown next journey dish"
+  - name: validator
+    coins:
+      - 100000000ubozon
+      - 200000000stake
+    mnemonic: "begin strategy result assume lumber layer dinner ride oven bottom solid kind engine practice plate embrace daughter web wish treat muscle elite enlist cram"
 client:
   openapi:
     path: docs/static/openapi.json
 faucet:
   name: bob
   coins:
-    - 5token
+    - 5ubozon
     - 100000stake
 validators:
   - name: alice
-    bonded: 100000000stake
-  - name: validator1
-    bonded: 200000000stake
-  - name: validator2
-    bonded: 100000000stake
+    bonded: "100000000stake"
+    home: /tmp/bozon1
+    keyring-backend: test
+  - name: bob
+    bonded: "100000000stake"
+    home: /tmp/bozon2
+    keyring-backend: test
+  - name: validator
+    bonded: "100000000stake"
+    home: /tmp/bozon3
+    keyring-backend: test
